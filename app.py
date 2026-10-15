@@ -1,5 +1,6 @@
 from flask import Flask, Response
 import os
+from zoneinfo import ZoneInfo
 from datetime import datetime
 
 app = Flask(__name__)
@@ -10,7 +11,7 @@ puerto = int(os.getenv("PORT", "5000"))
 
 @app.route("/")
 def main_func():
-    fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    fecha = datetime.now(ZoneInfo("America/Monterrey")).strftime("%Y-%m-%d %H:%M:%S")
     message = f"Hello world! Nombre: {Nombre}, Fecha: {fecha}"
 
     #Mostrar en LOG / systemout
